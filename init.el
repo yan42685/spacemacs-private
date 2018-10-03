@@ -2,6 +2,9 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+;; ALEX注：
+;;1.把typescript的两个package注释掉了，产生了两个error
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -75,9 +78,9 @@ values."
      lua
      html
      (javascript :variables javascript-backend 'nil)
-     (typescript :variables
-                typescript-fmt-on-save nil
-                typescript-fmt-tool 'typescript-formatter)
+     ;;(typescript :variables
+      ;;          typescript-fmt-on-save nil
+       ;;         typescript-fmt-tool 'typescript-formatter)
      emacs-lisp
      (clojure :variables clojure-enable-fancify-symbols t)
      racket
@@ -102,7 +105,7 @@ values."
                     spaceline holy-mode skewer-mode rainbow-delimiters
                     highlight-indentation vi-tilde-fringe eyebrowse
                     org-bullets smooth-scrolling org-repo-todo org-download org-timer
-                    livid-mode git-gutter git-gutter-fringe  evil-escape
+                    livid-mode git-gutter git-gutter-fringe
                     leuven-theme gh-md evil-lisp-state spray lorem-ipsum symon
                     ac-ispell ace-jump-mode auto-complete auto-dictionary
                     clang-format define-word google-translate disaster epic
@@ -131,9 +134,9 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 70
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -174,8 +177,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-light
-                         solarized-dark)
+   dotspacemacs-themes '(spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -358,6 +360,17 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
+ ;;# SPC o r 一键编译运行（代码必须缩进）
+(defun my-g++-compile-and-run ()
+  (interactive)
+  (compile (format "g++ %s && ./a.out" (buffer-file-name))))
+(spacemacs/set-leader-keys "or" 'my-g++-compile-and-run)
+;;
+;;# escape变成kj
+(setq-default evil-escape-key-sequence "kj")
+;;
+;;#（仅在图形化界面有效）与系统剪切板互通
+(setq x-select-enable-clipboard t)
   ;;解决org表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
     (when (and (spacemacs/system-is-mac) window-system)
@@ -450,3 +463,4 @@ This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
 )
+
