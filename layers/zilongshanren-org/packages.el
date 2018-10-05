@@ -104,14 +104,14 @@
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
 
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+            (quote ((sequence "TODO(t)" "DOING(s)" "|" "DONE(d!/!)")
                     (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)"))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
       ;; Change task state to STARTED when clocking in
-      (setq org-clock-in-switch-to-state "STARTED")
+      (setq org-clock-in-switch-to-state "DOING")
       ;; Save clock data and notes in the LOGBOOK drawer
       (setq org-clock-into-drawer t)
       ;; Removes clocked tasks with 0:00 duration
