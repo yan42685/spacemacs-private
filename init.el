@@ -364,7 +364,8 @@ values."
   ;;# SPC o r 一键编译运行（代码必须缩进）
   (defun my-g++-compile-and-run ()
     (interactive)
-    (compile (format "g++ %s && ./a.out" (buffer-file-name))))
+    ;; (compile (format "g++ %s && ./a.out" (buffer-file-name))))
+    (compile (format "gcc -W -Wall %s && ./a.out" (buffer-file-name))))
   (spacemacs/set-leader-keys "or" 'my-g++-compile-and-run)
   ;;
   ;;# escape变成kj
