@@ -357,11 +357,11 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
+  ;; 让compilation buffer 可以交互
   (defun my-compilation-mode-hook ()
     (interactive)
     (read-only-mode -1)
-    (comint-mode)
-    )
+    (comint-mode))
   (add-hook 'compilation-mode-hook 'my-compilation-mode-hook)
   ;;设置org-todo-keyword颜色
   (setq org-todo-keyword-faces '(("TODO" . "red")
