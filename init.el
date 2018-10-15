@@ -357,6 +357,8 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
+  ;; 显示行号
+  (linum-relative-global-mode t)
   ;; 让compilation buffer 可以交互
   (defun my-compilation-mode-hook ()
     (interactive)
