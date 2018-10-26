@@ -337,10 +337,12 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-	(setq-default configuration-layer-elpa-archives
-      '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-        ("org-cn"   . "http://elpa.emacs-china.org/org/")
-        ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+  ;; 我也不知道这是干什么的
+  ;;
+  (setq-default configuration-layer-elpa-archives
+                '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+                  ("org-cn"   . "http://elpa.emacs-china.org/org/")
+                  ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
 
   ;; https://github.com/syl20bnr/spacemacs/issues/2705
   ;; (setq tramp-mode nil)
@@ -372,8 +374,9 @@ values."
   ;;# SPC o r 一键编译运行（代码必须缩进）
   (defun my-g++-compile-and-run ()
     (interactive)
-    ;; (compile (format "g++ %s && ./a.out" (buffer-file-name))))
-    (compile (format "gcc -W -Wall %s && ./a.out" (buffer-file-name))))
+     ;; (compile (format "gcc %s && ./a.out" (buffer-file-name)))
+     (compile (format "gcc -W -Wall %s && ./a.out" (buffer-file-name)))
+    )
   (spacemacs/set-leader-keys "or" 'my-g++-compile-and-run)
   ;;
   ;;# escape变成kj
