@@ -375,7 +375,7 @@ values."
   (defun my-g++-compile-and-run ()
     (interactive)
      ;; (compile (format "gcc %s && ./a.out" (buffer-file-name)))
-     (compile (format "gcc -W -Wall %s && ./a.out" (buffer-file-name)))
+     (compile (format "gcc -W %s && ./a.out" (buffer-file-name)))
     )
   (spacemacs/set-leader-keys "or" 'my-g++-compile-and-run)
   ;;
