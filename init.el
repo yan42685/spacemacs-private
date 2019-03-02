@@ -374,10 +374,19 @@ values."
   ;; SPC o r 一键编译运行（代码必须缩进）
   (defun my-g++-compile-and-run ()
     (interactive)
-     ;; (compile (format "gcc %s && ./a.out" (buffer-file-name)))
-     (compile (format "gcc -W -Wall -g %s && ./a.out" (buffer-file-name)))
+    ;; (compile (format "gcc %s && ./a.out" (buffer-file-name)))
+    (compile (format "g++ -W -Wall -g %s && ./a.out" (buffer-file-name)))
     )
   (spacemacs/set-leader-keys "or" 'my-g++-compile-and-run)
+  ;;
+  ;;
+  ;; SPC o a 一键运行汇编
+  (defun my-assemble-compile-and-run ()
+    (interactive)
+    (compile (format "nasm -f elf64 %s && ld -s -o asmfile %s.o  && ./asmfile" (buffer-file-name) (substring (buffer-file-name) 0 -4)))
+  )
+  (spacemacs/set-leader-keys "oa" 'my-assemble-compile-and-run)
+
   ;;
   ;;# escape变成kj
   (setq-default evil-escape-key-sequence "kj")
