@@ -383,7 +383,7 @@ values."
   ;; SPC o a 一键运行汇编
   (defun my-assemble-compile-and-run ()
     (interactive)
-    (compile (format "nasm -f elf64 %s && ld -s -o a.out %s.o  && ./a.out" (buffer-file-name) (substring (buffer-file-name) 0 -4)))
+    (compile (format "nasm -f elf64 %s && ld -o a.out %s.o  && ./a.out" (buffer-file-name) (substring (buffer-file-name) 0 -4)))
   )
   (spacemacs/set-leader-keys "oa" 'my-assemble-compile-and-run)
 
